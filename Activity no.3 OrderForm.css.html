@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bulalo Dish Order Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('Bulalo4.jpeg');
+	  background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .form-container {
+      background-color: rgba(255, 255, 255, 0.9);
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+      text-align: center;
+      color: #b22222;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="submit"] {
+      background-color: #b22222;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #8b0000;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1>Order Your Bulalo Soup</h1>
+    <form action="submit_order.php" method="post">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="contact">Contact Number:</label>
+      <input type="tel" id="contact" name="contact" required>
+
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" name="email">
+
+      <label for="quantity">Quantity (servings):</label>
+      <input type="number" id="quantity" name="quantity" min="1" required>
+
+      <label for="spice">Spice Level:</label>
+      <select id="spice" name="spice">
+        <option value="Mild">Mild</option>
+        <option value="Medium">Medium</option>
+        <option value="Extreme">Extreme</option>
+      </select>
+
+      <label for="pickup">Preferred Pickup Time:</label>
+      <input type="time" id="pickup" name="pickup">
+
+      <label for="notes">Special Instructions:</label>
+      <textarea id="notes" name="notes" rows="4"></textarea>
+
+      <input type="submit" value="Place Order">
+    </form>
+  </div>
+</body>
+</html>

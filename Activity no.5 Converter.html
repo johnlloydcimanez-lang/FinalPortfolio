@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: url('https://www.w3schools.com/w3images/fog.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            width: 300px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 12px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        button {
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .background-info {
+            max-width: 700px;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            font-size: 14px;
+            margin-top: 30px;
+        }
+
+        .background-info h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .background-info p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Temperature Converter</h2>
+    
+	<body style="background-image: url('temp.jpg');">
+    <input type="number" id="inputTemp" placeholder="Enter temperature">
+
+    <select id="fromUnit">
+        <option value="C">Celsius (°C)</option>
+        <option value="F">Fahrenheit (°F)</option>
+        <option value="K">Kelvin (K)</option>
+    </select>
+
+    <select id="toUnit">
+        <option value="C">Celsius (°C)</option>
+        <option value="F">Fahrenheit (°F)</option>
+        <option value="K">Kelvin (K)</option>
+    </select>
+
+    <button onclick="convertTemperature()">Convert</button>
+
+    <h3 id="result"></h3>
+</div>
+
+<div class="background-info">
+    <h3>About Temperature Scales</h3>
+    <p><strong>Celsius (°C):</strong> The Celsius scale is a metric temperature scale. Water freezes at 0°C and boils at 100°C (at 1 atmosphere of pressure).</p>
+    
+    <p><strong>Fahrenheit (°F):</strong> The Fahrenheit scale is used primarily in the United States. Water freezes at 32°F and boils at 212°F (at 1 atmosphere of pressure).</p>
+    
+    <p><strong>Kelvin (K):</strong> The Kelvin scale is an absolute temperature scale. It starts at absolute zero, the lowest possible temperature, at 0 K. One Kelvin unit is equivalent to one degree Celsius.</p>
+</div>
+
+<script>
+function convertTemperature() {
+    let value = parseFloat(document.getElementById("inputTemp").value);
+    let from = document.getElementById("fromUnit").value;
+    let to = document.getElementById("toUnit").value;
+
+    if (isNaN(value)) {
+        document.getElementById("result").textContent = "Enter a valid number.";
+        return;
+    }
+
+    let celsius;
+
+    // Convert to Celsius first
+    if (from === "C") celsius = value;
+    else if (from === "F") celsius = (value - 32) * 5/9;
+    else if (from === "K") celsius = value - 273.15;
+
+    let output;
+
+    // Convert to target unit
+    if (to === "C") output = celsius;
+    else if (to === "F") output = (celsius * 9/5) + 32;
+    else if (to === "K") output = celsius + 273.15;
+
+    document.getElementById("result").textContent =
+        `${value}°${from} = ${output.toFixed(2)}°${to}`;
+}
+</script>
+
+</body>
+</html>
